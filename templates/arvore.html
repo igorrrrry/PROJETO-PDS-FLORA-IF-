@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ficha da árvore | Flora do IFRN Pau dos Ferros</title>
+    <meta name="description" content="Ficha individual da árvore mapeada no IFRN Campus Pau dos Ferros: espécie, área, localização no mapa, curiosidades, utilidades e QR Code." />
+    <meta property="og:title" content="Ficha da árvore | Flora do IFRN" />
+    <meta property="og:description" content="Informações da árvore, curiosidades, utilidades e localização no mapa do campus." />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <header class="topo" id="topo"></header>
+    <main class="secao"><div class="container" id="conteudo"></div></main>
+    <footer class="rodape" id="rodape"></footer>
+
+    <script src="js/qrcode.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mapa.js"></script>
+    <script>
+      montarLayout("mapa.html");
+      const arv = DB.arvore(paramUrl("id"));
+      const alvo = document.getElementById("conteudo");
+
+      if (!arv) {
+        alvo.innerHTML = `<h1>Árvore não encontrada</h1><p class="texto-suave">Confira o QR Code ou volte ao mapa.</p><a class="btn btn-primario" href="mapa.html">Ir para o mapa</a>`;
+      } else {
+        const esp = DB.especie(arv.especieId);
+        document.title = `${esp.nomePopular} — ${arv.id} | Flora do IFRN`;
+        alvo.innerHTML = `
+          <p class="migalhas"><a href="mapa.html">Mapa</a> › <a href="especie.html?id=${esp.id}">${esp.nomePopular}</a> › ${arv.id}</p>
+          <div class="detalhe">
+            <div>
+              <div class="detalhe-figura">${ilustracaoSVG(esp.ilustracao)}</div>
+              <div class="bloco" style="margin-top:1rem">
+                <h3 style="font-size:1rem">Identificação</h3>
+                <div class="dados">
+                  <div><span>ID</span><strong>${arv.id}</strong></div>
+                  <div><span>Área do campus</span><strong>${DB.nomeArea(arv.areaId)}</strong></div>
+                  <div><span>Coordenada no mapa</span><strong>x ${arv.x} · y ${arv.y}</strong></div>
+                  <div><span>Plantio aproximado</span><strong>${arv.plantioAprox}</strong></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1>${esp.nomePopular}</h1>
+              <p class="cientifico" style="font-size:1.05rem">${esp.nomeCientifico}</p>
+              <div class="aviso-ficticio" style="margin:1rem 0">⚠️ Registro <strong>fictício</strong> de demonstração.</div>
+              <p><strong>Origem:</strong> ${esp.origem}</p>
+              <p>${arv.observacoes}</p>
+
+              <div class="bloco"><h3>Curiosidades</h3><ul class="lista-limpa">${esp.curiosidades.map((c) => `<li>${c}</li>`).join("")}</ul></div>
+              <div class="bloco"><h3>Utilidades</h3><ul class="lista-limpa">${esp.utilidades.map((u) => `<li>${u}</li>`).join("")}</ul></div>
+
+              <div class="bloco">
+                <h3>Localização no mapa</h3>
+                <div class="mapa-caixa" style="box-shadow:none"><svg id="mapa-svg" role="img" aria-label="Localização da árvore no campus"></svg></div>
+                <p style="margin-top:1rem"><a class="btn btn-primario btn-sm" href="mapa.html?arvore=${arv.id}">Abrir mapa completo</a></p>
+              </div>
+
+              <div class="bloco">
+                <h3>QR Code desta árvore</h3>
+                <div class="qr-caixa">
+                  <div class="qr-img" id="qr"></div>
+                  <div>
+                    <p class="texto-suave" style="font-size:.9rem;max-width:38ch">
+                      Imprima este QR Code em uma placa junto à árvore. Ao ser escaneado, ele abre exatamente esta página.
+                    </p>
+                    <p style="font-size:.82rem;word-break:break-all" id="qr-url"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+        renderizarMapa({ aoSelecionar: (id) => (window.location.href = "arvore.html?id=" + id) });
+        aplicarFiltroMapa({ areaId: arv.areaId });
+        document.querySelectorAll("#mapa-svg .arvore").forEach((el) => el.classList.remove("apagada"));
+        destacarArvore(arv.id);
+
+        const url = window.location.origin + window.location.pathname + "?id=" + arv.id;
+        document.getElementById("qr-url").textContent = url;
+        gerarQrCode(document.getElementById("qr"), url);
+      }
+    </script>
+  </body>
+</html>

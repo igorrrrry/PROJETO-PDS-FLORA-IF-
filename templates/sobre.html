@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sobre o projeto | Flora do IFRN Pau dos Ferros</title>
+    <meta name="description" content="Objetivo do TCC, importância do mapeamento da flora do IFRN Campus Pau dos Ferros e proposta do sistema web com mapa interativo e QR Codes." />
+    <meta property="og:title" content="Sobre o projeto de mapeamento da flora" />
+    <meta property="og:description" content="Objetivos, metodologia e proposta do sistema desenvolvido no TCC." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topo" id="topo"></header>
+
+    <main class="secao">
+      <div class="container" style="max-width: 860px">
+        <h1>Sobre o projeto</h1>
+        <p class="texto-suave">
+          Sistema web desenvolvido como Trabalho de Conclusão de Curso para o mapeamento da flora do IFRN
+          Campus Pau dos Ferros.
+        </p>
+
+        <div class="bloco">
+          <h3>Objetivo do TCC</h3>
+          <p style="margin: 0">
+            Identificar, catalogar e localizar as espécies vegetais presentes no campus, reunindo as informações em
+            uma plataforma digital acessível a estudantes, servidores e visitantes. O sistema transforma o próprio
+            campus em um espaço de aprendizagem sobre botânica e educação ambiental.
+          </p>
+        </div>
+
+        <div class="bloco">
+          <h3>Por que mapear a flora</h3>
+          <ul class="lista-limpa">
+            <li>Conhecer a diversidade vegetal existente e diferenciar espécies nativas de exóticas.</li>
+            <li>Apoiar aulas práticas de biologia, botânica e ecologia com material do próprio campus.</li>
+            <li>Subsidiar o planejamento de novos plantios, manutenção e conservação das árvores.</li>
+            <li>Aproximar a comunidade escolar do ambiente em que convive todos os dias.</li>
+          </ul>
+        </div>
+
+        <div class="bloco">
+          <h3>Proposta do sistema</h3>
+          <div class="grade grade-2" style="margin-top: .8rem">
+            <div class="card-info"><h3>Mapa interativo</h3><p class="texto-suave" style="margin:0">Campus dividido em 12 áreas, com árvores ilustradas, busca por espécie e filtro por área.</p></div>
+            <div class="card-info"><h3>Catálogo de espécies</h3><p class="texto-suave" style="margin:0">Ficha com nome popular, nome científico, origem, curiosidades e utilidades.</p></div>
+            <div class="card-info"><h3>Fichas por árvore</h3><p class="texto-suave" style="margin:0">Cada indivíduo tem ID próprio; várias árvores podem pertencer à mesma espécie.</p></div>
+            <div class="card-info"><h3>QR Codes</h3><p class="texto-suave" style="margin:0">Placas no campus levam direto à ficha da árvore escaneada pelo celular.</p></div>
+          </div>
+        </div>
+
+        <div class="bloco">
+          <h3>Situação atual dos dados</h3>
+          <div class="aviso-ficticio">
+            ⚠️ O sistema está publicado com <strong>dados fictícios de demonstração</strong>. Espécies, árvores,
+            curiosidades e posições no mapa são exemplos e serão substituídos pelos dados reais coletados em campo
+            durante a pesquisa do TCC.
+          </div>
+          <p style="margin-top: 1rem">
+            O mapa é ilustrativo e provisório, já preparado para receber a planta real do campus: as áreas e as
+            posições das árvores ficam concentradas em um único arquivo de dados, bastando alterar as coordenadas.
+          </p>
+        </div>
+
+        <div class="bloco">
+          <h3>Tecnologia</h3>
+          <p style="margin: 0">
+            Construído com HTML, CSS e JavaScript, mapa em SVG interativo, geração de QR Code no navegador e layout
+            responsivo para computador e celular, com componentes reutilizados entre todas as páginas.
+          </p>
+        </div>
+
+        <a class="btn btn-primario" href="mapa.html">Explorar o mapa</a>
+      </div>
+    </main>
+
+    <footer class="rodape" id="rodape"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      montarLayout("sobre.html");
+    </script>
+  </body>
+</html>

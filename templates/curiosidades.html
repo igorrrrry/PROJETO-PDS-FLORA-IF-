@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curiosidades e aprendizados | Flora do IFRN Pau dos Ferros</title>
+    <meta name="description" content="Conteúdos educativos sobre biologia, botânica, ecologia, biodiversidade, fotossíntese, polinização e a importância das árvores." />
+    <meta property="og:title" content="Curiosidades e aprendizados sobre a flora" />
+    <meta property="og:description" content="Página educativa com conceitos de botânica, ecologia e meio ambiente." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topo" id="topo"></header>
+
+    <main class="secao">
+      <div class="container">
+        <h1>Curiosidades e aprendizados</h1>
+        <p class="texto-suave" style="max-width: 66ch">
+          Conteúdos curtos para apoiar aulas e visitas guiadas ao campus. Cada card trata de um tema ligado ao
+          mapeamento da flora.
+        </p>
+
+        <div class="ferramentas" style="margin-top: 1.5rem">
+          <label class="campo">🔍<input id="busca" type="search" placeholder="Buscar tema (ex.: polinização)" /></label>
+        </div>
+
+        <div class="grade grade-3" id="lista"></div>
+
+        <div class="card-info" style="margin-top: 2rem">
+          <h3>Você sabia?</h3>
+          <p class="texto-suave" style="margin: 0">
+            Uma única árvore adulta pode transpirar centenas de litros de água por dia, funcionando como um
+            verdadeiro ar-condicionado natural — motivo pelo qual pátios arborizados são mais frescos.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="rodape" id="rodape"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      montarLayout("curiosidades.html");
+      const lista = document.getElementById("lista");
+      const busca = document.getElementById("busca");
+
+      function render() {
+        const t = normalizar(busca.value);
+        lista.innerHTML = DB.conteudos
+          .filter((c) => !t || normalizar(c.tema + c.titulo + c.texto).includes(t))
+          .map(
+            (c) => `
+            <article class="card-info">
+              <div class="icone">${c.icone}</div>
+              <span class="tag">${c.tema}</span>
+              <h3 style="margin-top:.5rem">${c.titulo}</h3>
+              <p class="texto-suave" style="margin:0">${c.texto}</p>
+            </article>`,
+          )
+          .join("");
+      }
+
+      busca.addEventListener("input", render);
+      render();
+    </script>
+  </body>
+</html>

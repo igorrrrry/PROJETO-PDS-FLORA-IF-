@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ficha da espécie | Flora do IFRN Pau dos Ferros</title>
+    <meta name="description" content="Ficha completa da espécie: nome popular, nome científico, origem, curiosidades, utilidades e árvores mapeadas no campus." />
+    <meta property="og:title" content="Ficha da espécie | Flora do IFRN" />
+    <meta property="og:description" content="Informações botânicas e localização das árvores da espécie no campus." />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topo" id="topo"></header>
+    <main class="secao"><div class="container" id="conteudo"></div></main>
+    <footer class="rodape" id="rodape"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      montarLayout("especies.html");
+      const especie = DB.especie(paramUrl("id"));
+      const alvo = document.getElementById("conteudo");
+
+      if (!especie) {
+        alvo.innerHTML = `<h1>Espécie não encontrada</h1><p class="texto-suave">Verifique o link ou volte ao catálogo.</p><a class="btn btn-primario" href="especies.html">Ver espécies</a>`;
+      } else {
+        document.title = `${especie.nomePopular} | Flora do IFRN Pau dos Ferros`;
+        const arvores = DB.arvoresDaEspecie(especie.id);
+        alvo.innerHTML = `
+          <p class="migalhas"><a href="especies.html">Espécies</a> › ${especie.nomePopular}</p>
+          <div class="detalhe">
+            <div>
+              <div class="detalhe-figura">${ilustracaoSVG(especie.ilustracao)}</div>
+              <div class="bloco" style="margin-top:1rem">
+                <h3 style="font-size:1rem">Dados básicos</h3>
+                <div class="dados">
+                  <div><span>Nome científico</span><strong class="cientifico">${especie.nomeCientifico}</strong></div>
+                  <div><span>Família</span><strong>${especie.familia}</strong></div>
+                  <div><span>Origem</span><strong>${especie.origem}</strong></div>
+                  <div><span>Porte</span><strong>${especie.porte}</strong></div>
+                  <div><span>Árvores mapeadas</span><strong>${arvores.length}</strong></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1>${especie.nomePopular}</h1>
+              <p class="cientifico" style="font-size:1.05rem">${especie.nomeCientifico}</p>
+              <div class="aviso-ficticio" style="margin:1rem 0">⚠️ Conteúdo <strong>fictício</strong> de demonstração.</div>
+              <p>${especie.resumo}</p>
+
+              <div class="bloco"><h3>Curiosidades</h3><ul class="lista-limpa">${especie.curiosidades.map((c) => `<li>${c}</li>`).join("")}</ul></div>
+              <div class="bloco"><h3>Utilidades</h3><ul class="lista-limpa">${especie.utilidades.map((u) => `<li>${u}</li>`).join("")}</ul></div>
+
+              <div class="bloco">
+                <h3>Onde encontrar no campus</h3>
+                <div class="grade grade-2" style="margin-top:.8rem">${arvores.map(cardArvore).join("")}</div>
+                <p style="margin-top:1rem"><a class="btn btn-primario btn-sm" href="mapa.html?arvore=${arvores[0] ? arvores[0].id : ""}">Ver no mapa</a></p>
+              </div>
+            </div>
+          </div>`;
+      }
+    </script>
+  </body>
+</html>

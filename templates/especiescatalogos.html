@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Espécies catalogadas | Flora do IFRN Pau dos Ferros</title>
+    <meta
+      name="description"
+      content="Catálogo das espécies vegetais mapeadas no IFRN Campus Pau dos Ferros, com nome popular, nome científico, origem, curiosidades e utilidades."
+    />
+    <meta property="og:title" content="Espécies catalogadas no campus" />
+    <meta property="og:description" content="Catálogo botânico do mapeamento da flora do IFRN Pau dos Ferros." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topo" id="topo"></header>
+
+    <main class="secao">
+      <div class="container">
+        <h1>Espécies</h1>
+        <p class="texto-suave" style="max-width: 66ch">
+          Cada card representa uma espécie. Uma mesma espécie pode ter vários indivíduos (árvores) espalhados pelo campus.
+        </p>
+        <div class="aviso-ficticio" style="margin: 1rem 0 1.5rem">⚠️ Catálogo de demonstração com <strong>dados fictícios</strong>.</div>
+
+        <div class="ferramentas">
+          <label class="campo">🔍<input id="busca" type="search" placeholder="Buscar espécie ou nome científico" /></label>
+          <select class="campo" id="filtro-area" aria-label="Filtrar por área"><option value="todas">Todas as áreas</option></select>
+          <select class="campo" id="filtro-origem" aria-label="Filtrar por origem">
+            <option value="todas">Nativas e exóticas</option>
+            <option value="nativa">Somente nativas</option>
+            <option value="exotica">Somente exóticas</option>
+          </select>
+        </div>
+
+        <p class="texto-suave" id="contagem" style="font-size: .9rem"></p>
+        <div class="grade grade-3" id="lista"></div>
+        <p id="vazio" class="texto-suave" hidden>Nenhuma espécie encontrada com esses filtros.</p>
+      </div>
+    </main>
+
+    <footer class="rodape" id="rodape"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      montarLayout("especies.html");
+      const busca = document.getElementById("busca");
+      const fArea = document.getElementById("filtro-area");
+      const fOrigem = document.getElementById("filtro-origem");
+      const lista = document.getElementById("lista");
+      const contagem = document.getElementById("contagem");
+      const vazio = document.getElementById("vazio");
+
+      fArea.innerHTML =
+        '<option value="todas">Todas as áreas</option>' +
+        DB.areas.map((a) => `<option value="${a.id}">${a.nome}</option>`).join("");
+
+      function filtrar() {
+        const termo = normalizar(busca.value);
+        const resultado = DB.especies.filter((e) => {
+          const casaTexto =
+            !termo || normalizar(e.nomePopular).includes(termo) || normalizar(e.nomeCientifico).includes(termo);
+          const exotica = e.origem.includes("Exótica");
+          const casaOrigem =
+            fOrigem.value === "todas" || (fOrigem.value === "exotica" ? exotica : !exotica);
+          const casaArea =
+            fArea.value === "todas" || DB.arvoresDaEspecie(e.id).some((a) => a.areaId === fArea.value);
+          return casaTexto && casaOrigem && casaArea;
+        });
+        lista.innerHTML = resultado.map(cardEspecie).join("");
+        contagem.textContent = `${resultado.length} de ${DB.especies.length} espécies.`;
+        vazio.hidden = resultado.length > 0;
+      }
+
+      [busca, fArea, fOrigem].forEach((el) => el.addEventListener("input", filtrar));
+      const areaUrl = paramUrl("area");
+      if (areaUrl) fArea.value = areaUrl;
+      filtrar();
+    </script>
+  </body>
+</html>
