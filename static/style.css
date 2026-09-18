@@ -81,6 +81,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links a {
+    transition: color 0.4s ease, background 0.4s ease;
     color: #66716b;
     font-size: 14px;
     font-weight: 600;
@@ -156,16 +157,18 @@ h1 {
     font-weight: 700;
 }
 
-.btn-yellow {
-    background: var(--yellow);
-    color: #2e300f;
-}
+
 
 .btn-white {
+    transition: color 0.4s ease, background 0.4s ease;
     background: white;
     color: #214d31;
 }
 
+.btn-white:hover {
+    background: var(--yellow);
+    color: #2e300f;
+}
 .stats {
     display: flex;
     gap: 14px;
@@ -245,7 +248,8 @@ h1 {
 }
 
 .tree b {
-    z-index: 1;
+    opacity: 0.8;
+    z-index: 2;
 }
 
 .tree em {
@@ -254,7 +258,7 @@ h1 {
 
 /* Ipê */
 .tree-ipê b {
-    left: 19px; top: 24px;
+    left: -3px; top: 24px;
     width: 82px; height: 64px;
     background: #ffd348;
     border-radius: 48% 52% 43% 57%;
@@ -263,7 +267,7 @@ h1 {
 
 /* Cajueiro */
 .tree-cajueiro b {
-    left: 18px; top: 34px;
+    left: 8px; top: 34px;
     width: 82px; height: 46px;
     background: #2ca95b;
     border-radius: 50%;
@@ -278,8 +282,8 @@ h1 {
 
 /* Mangueira */
 .tree-manga b {
-    left: 24px; top: 17px;
-    width: 70px; height: 72px;
+    left: 28px; top: 17px;
+    width: 60px; height: 60px;
     background: #176f3b;
     border-radius: 50%;
     box-shadow: -20px 25px 0 -5px #2aa653, 25px 23px 0 -2px #2aa653;
@@ -294,17 +298,17 @@ h1 {
 /* Coqueiro */
 .tree-coqueiro i {
     left: 58px; height: 67px; bottom: 12px;
-    transform: rotate(3deg);
+    transform: rotate(1deg);
 }
-
+/*
 .tree-coqueiro b {
     left: 37px; top: 21px;
-    width: 47px; height: 10px;
+    width: 47px; height: 30px;
     border-top: 5px solid #30a55a;
     border-radius: 50%;
     transform: rotate(-18deg);
-    box-shadow: 20px 3px 0 -1px #30a55a, -10px 10px 0 -1px #30a55a;
-}
+    box-shadow: 20px 3px 0 -1px #30a55a, -10px 10px 0 -1px #30a55a; 
+}*/
 
 .tree-coqueiro em {
     left: 58px; top: 37px; width: 10px; height: 10px;
