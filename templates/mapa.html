@@ -1,133 +1,251 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mapa interativo do campus | Flora do IFRN Pau dos Ferros</title>
-    <meta
-      name="description"
-      content="Mapa interativo e ilustrativo do IFRN Campus Pau dos Ferros com as árvores mapeadas por área, busca por espécie e filtro por área."
-    />
-    <meta property="og:title" content="Mapa interativo da flora do campus" />
-    <meta property="og:description" content="Clique em uma árvore no mapa e veja as informações da espécie." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-  </head>
-  <body>
-    <header class="topo" id="topo"></header>
 
-    <main class="secao">
-      <div class="container">
+{% block title %}Mapa | Flora do IFRN{% endblock %}
+
+{% block content %}
+
+<main class="mapa-page">
+
+    <!-- Título da página -->
+    <section class="mapa-header">
         <h1>Mapa do campus</h1>
-        <p class="texto-suave" style="max-width: 66ch">
-          Mapa ilustrativo e provisório, preparado para receber a planta real do campus. Clique em uma árvore para
-          destacá-la e ver as informações da espécie.
+
+        <p>
+            Mapa ilustrativo e provisório, preparado para receber a planta real do campus.
+            Clique em uma árvore para destacá-la e ver as informações da espécie.
         </p>
-        <div class="aviso-ficticio" style="margin: 1rem 0 1.5rem">
-          ⚠️ Posições e árvores são <strong>fictícias</strong> (demonstração).
+    </section>
+
+
+    <!-- Filtros -->
+    <section class="mapa-filtros">
+
+        <div class="campo-busca">
+            <span>⌕</span>
+            <input
+                type="text"
+                placeholder="Buscar por espécie, nome científico ou ID..."
+            >
         </div>
 
-        <div class="ferramentas">
-          <label class="campo">
-            🔍
-            <input id="busca" type="search" placeholder="Buscar por espécie, nome científico ou ID (ex.: ARV-001)" />
-          </label>
-          <select class="campo" id="filtro-area" aria-label="Filtrar por área">
-            <option value="todas">Todas as áreas</option>
-          </select>
-          <button class="btn btn-linha btn-sm" id="limpar">Limpar</button>
-        </div>
-        <p class="texto-suave" id="contagem" style="font-size: .9rem"></p>
+        <select>
+            <option>Todas as áreas</option>
+            <option>Passarela e estacionamento</option>
+            <option>Área ao lado da passarela</option>
+            <option>Pátio</option>
+            <option>Bloco Principal</option>
+            <option>Laboratórios</option>
+            <option>Refeitório</option>
+            <option>Biblioteca</option>
+            <option>Anexo (dentro)</option>
+            <option>Quadra</option>
+            <option>Apiário</option>
+            <option>Anexo (fora)</option>
+            <option>Viveiro</option>
+        </select>
 
-        <div class="mapa-layout">
-          <div class="mapa-caixa">
-            <svg id="mapa-svg" role="img" aria-label="Mapa ilustrativo do campus"></svg>
-          </div>
+    </section>
 
-          <aside class="painel">
-            <div id="painel-conteudo">
-              <h3>Selecione uma árvore</h3>
-              <p class="painel-vazio">Toque em uma ilustração no mapa para ver a espécie, a área e o link da ficha completa.</p>
-              <h3 style="margin-top: 1.2rem; font-size: 1rem">Áreas do campus</h3>
-              <ul class="lista-legenda" id="legenda-areas"></ul>
+
+    <p class="resultado-mapa">22 árvore(s) encontrada(s)</p>
+
+
+    <!-- Área principal -->
+    <section class="mapa-container">
+
+        <!-- MAPA -->
+        <div class="mapa-campus">
+
+            <!-- Passarela -->
+            <div class="area area-passarela">
+                <span class="area-titulo">Passarela e estacionamento</span>
+
+                <button class="arvore ipê">🌳</button>
+                <button class="arvore ipê">🌳</button>
+                <button class="arvore coqueiro">🌴</button>
             </div>
-          </aside>
+
+
+            <!-- Pátio -->
+            <div class="area area-patio">
+                <span class="area-titulo">Pátio</span>
+
+                <button class="arvore cajueiro">🌳</button>
+                <button class="arvore coqueiro">🌴</button>
+                <button class="arvore hibisco">🌺</button>
+            </div>
+
+
+            <!-- Bloco Principal -->
+            <div class="area area-bloco">
+                <span class="area-titulo">Bloco Principal</span>
+
+                <button class="arvore cajueiro">🌳</button>
+            </div>
+
+
+            <!-- Refeitório -->
+            <div class="area area-refeitorio">
+                <span class="area-titulo">Refeitório</span>
+
+                <button class="arvore arvore-triangulo">🌲</button>
+            </div>
+
+
+            <!-- Área ao lado da passarela -->
+            <div class="area area-lado-passarela">
+                <span class="area-titulo">Área ao lado da passarela</span>
+
+                <button class="arvore hibisco">🌺</button>
+                <button class="arvore cajueiro">🌳</button>
+            </div>
+
+
+            <!-- Laboratórios -->
+            <div class="area area-laboratorios">
+                <span class="area-titulo">Laboratórios</span>
+
+                <button class="arvore ipê">🌳</button>
+            </div>
+
+
+            <!-- Biblioteca -->
+            <div class="area area-biblioteca">
+                <span class="area-titulo">Biblioteca</span>
+
+                <button class="arvore hibisco">🌺</button>
+            </div>
+
+
+            <!-- Anexo dentro -->
+            <div class="area area-anexo-dentro">
+                <span class="area-titulo">Anexo (dentro)</span>
+
+                <button class="arvore cajueiro">🌳</button>
+            </div>
+
+
+            <!-- Quadra -->
+            <div class="area area-quadra">
+                <span class="area-titulo">Quadra</span>
+
+                <button class="arvore coqueiro">🌴</button>
+                <button class="arvore ipê">🌳</button>
+            </div>
+
+
+            <!-- Apiário -->
+            <div class="area area-apiario">
+                <span class="area-titulo">Apiário</span>
+
+                <button class="arvore cajueiro">🌳</button>
+                <button class="arvore cajueiro">🌳</button>
+                <button class="arvore ipê">🌳</button>
+            </div>
+
+
+            <!-- Anexo fora -->
+            <div class="area area-anexo-fora">
+                <span class="area-titulo">Anexo (fora)</span>
+
+                <button class="arvore arvore-triangulo">🌲</button>
+                <button class="arvore cajueiro">🌳</button>
+            </div>
+
+
+            <!-- Viveiro -->
+            <div class="area area-viveiro">
+                <span class="area-titulo">Viveiro</span>
+
+                <button class="arvore hibisco">🌺</button>
+                <button class="arvore arvore-triangulo">🌲</button>
+            </div>
+
         </div>
-      </div>
-    </main>
 
-    <footer class="rodape" id="rodape"></footer>
 
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/mapa.js"></script>
-    <script>
-      montarLayout("mapa.html");
+        <!-- LISTA DE ÁRVORES -->
+        <aside class="lista-arvores">
 
-      const busca = document.getElementById("busca");
-      const filtroArea = document.getElementById("filtro-area");
-      const contagem = document.getElementById("contagem");
-      const painel = document.getElementById("painel-conteudo");
+            <h2>Selecione uma árvore</h2>
 
-      filtroArea.innerHTML =
-        '<option value="todas">Todas as áreas</option>' +
-        DB.areas.map((a) => `<option value="${a.id}">${a.nome}</option>`).join("");
+            <p>
+                Clique em uma ilustração no mapa para ver os dados do exemplar.
+            </p>
 
-      document.getElementById("legenda-areas").innerHTML = DB.areas
-        .map((a) => {
-          const n = DB.arvores.filter((t) => t.areaId === a.id).length;
-          return `<li><button data-area="${a.id}">${a.nome} <span class="texto-suave">· ${n}</span></button></li>`;
-        })
-        .join("");
+            <div class="arvores-lista">
 
-      function mostrarArvore(id) {
-        const arv = DB.arvore(id);
-        const esp = DB.especie(arv.especieId);
-        destacarArvore(id);
-        painel.innerHTML = `
-          <div style="display:grid;place-items:center;background:var(--verde-50);border-radius:12px;padding:.8rem;margin-bottom:.8rem">
-            <div style="width:110px">${ilustracaoSVG(esp.ilustracao)}</div>
-          </div>
-          <span class="tag">${arv.id}</span>
-          <h3 style="margin-top:.6rem">${esp.nomePopular}</h3>
-          <p class="cientifico">${esp.nomeCientifico}</p>
-          <p class="texto-suave" style="font-size:.9rem">${esp.resumo}</p>
-          <p style="font-size:.9rem;margin:0 0 .3rem"><strong>Área:</strong> ${DB.nomeArea(arv.areaId)}</p>
-          <p style="font-size:.9rem"><strong>Origem:</strong> ${esp.origem}</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-            <a class="btn btn-primario btn-sm" href="arvore.html?id=${arv.id}">Ficha da árvore</a>
-            <a class="btn btn-linha btn-sm" href="especie.html?id=${esp.id}">Espécie</a>
-          </div>`;
-      }
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Ipê-amarelo (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-001</span>
+                </button>
 
-      function atualizar() {
-        const visiveis = aplicarFiltroMapa({ termo: busca.value, areaId: filtroArea.value });
-        contagem.textContent = `${visiveis} de ${DB.arvores.length} árvores exibidas.`;
-        document.querySelectorAll("#legenda-areas button").forEach((b) => {
-          b.classList.toggle("ativo", b.dataset.area === filtroArea.value);
-        });
-      }
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Ipê-amarelo (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-002</span>
+                </button>
 
-      renderizarMapa({ aoSelecionar: mostrarArvore });
-      busca.addEventListener("input", atualizar);
-      filtroArea.addEventListener("change", atualizar);
-      document.getElementById("limpar").addEventListener("click", () => {
-        busca.value = "";
-        filtroArea.value = "todas";
-        atualizar();
-      });
-      document.querySelectorAll("#legenda-areas button").forEach((b) => {
-        b.addEventListener("click", () => {
-          filtroArea.value = filtroArea.value === b.dataset.area ? "todas" : b.dataset.area;
-          atualizar();
-        });
-      });
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌴</span>
+                    <span class="nome-arvore">Coqueiro (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-003</span>
+                </button>
 
-      atualizar();
-      const focar = paramUrl("arvore");
-      if (focar && DB.arvore(focar)) mostrarArvore(focar);
-    </script>
-  </body>
-</html>
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌺</span>
+                    <span class="nome-arvore">Hibisco (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-004</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Cajueiro (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-005</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Cajueiro (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-006</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌴</span>
+                    <span class="nome-arvore">Coqueiro (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-007</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Cajueiro (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-008</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌺</span>
+                    <span class="nome-arvore">Hibisco (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-009</span>
+                </button>
+
+                <button class="item-arvore">
+                    <span class="icone-arvore">🌳</span>
+                    <span class="nome-arvore">Ipê-amarelo (fictício)</span>
+                    <span class="id-arvore">IFRN-PF-010</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+{% include 'fragments/footer.html' %}
+
+{% endblock %}

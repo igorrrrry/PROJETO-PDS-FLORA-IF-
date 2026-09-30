@@ -19,8 +19,8 @@
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-white">Acessar o mapa interativo</a>
-                    <a href="#" class="btn btn-white">Ver espécies</a>
+                    <a href="{% url 'mapa' %}" class="btn btn-white">Acessar o mapa interativo</a>
+                    <a href="{% url 'especie' %}" class="btn btn-white">Ver espécies</a>
                 </div>
 
                 <div class="stats">
@@ -145,7 +145,7 @@
             </article>
         </div>
 
-        <a href="#" class="all-species">Ver todas as espécies</a>
+        <a href="{% url 'especie' %}" class="all-species">Ver todas as espécies</a>
     </section>
 </main>
 

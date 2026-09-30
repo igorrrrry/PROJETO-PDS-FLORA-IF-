@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root {
+    --green: #176d3c;
+    --dark: #12351f;
+    --text: #596760;
+    --line: #d5e2d8;
+    --soft: #e8f5db;
+    --yellow: #fff2c7;
+    --cream: #f8faf7;
+    --white: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--dark);
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    font-family: "Libre Baskerville", Georgia, serif;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 54px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    width: min(1090px, 90%);
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-tree {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 17px;
+}
+
+.brand strong {
+    display: block;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 14px;
+}
+
+.brand small {
+    display: block;
+    color: #66736d;
+    font-size: 9px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3px;
+}
+
+.nav-links a {
+    padding: 8px 11px;
+    border-radius: 20px;
+    color: #596760;
+    font-size: 12px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #e4f2d9;
+    color: var(--green);
+}
+
+
+/* =========================
+   PADRÃO DAS PÁGINAS
+========================= */
+
+.curiosidades-page,
+.sobre-page,
+.especies-page,
+.mapa-page {
+    margin: auto;
+}
+
+.curiosidades-header,
+.sobre-header,
+.especies-header,
+.mapa-header {
+    margin-bottom: 20px;
+}
+
+.curiosidades-header h1,
+.sobre-header h1,
+.especies-header h1,
+.mapa-header h1 {
+    color: var(--dark);
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+}
+
+.curiosidades-header p,
+.sobre-header p,
+.especies-header p,
+.mapa-header p {
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* =========================
+   CURIOSIDADES
+========================= */
+
+.curiosidades-page {
+    width: min(890px, 90%);
+    padding: 32px 0 205px;
+}
+
+.curiosidades-header p {
+    max-width: 530px;
+}
+
+.curiosidades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.curiosidade-card,
+.sobre-card,
+.card-especie {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 10px 22px rgba(23,109,60,.10);
+}
+
+.curiosidade-card {
+    min-height: 143px;
+    padding: 20px;
+}
+
+.curiosidade-card p,
+.sobre-card p {
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 12px 0 0;
+}
+
+.curiosidade-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: #fff3c9;
+    color: #8b6508;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre-page {
+    width: min(740px, 90%);
+    padding: 30px 0 137px;
+}
+
+.sobre-header {
+    margin-bottom: 25px;
+}
+
+.sobre-header p {
+    margin-bottom: 13px;
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.sobre-card {
+    min-height: 122px;
+    padding: 20px;
+}
+
+.sobre-card h2,
+.aviso-dados h2 {
+    font-size: 14px;
+    margin: 0 0 12px;
+}
+
+.aviso-dados {
+    margin-top: 26px;
+    padding: 20px;
+    border: 1px solid #e5b927;
+    border-radius: 17px;
+    background: #fff8d9;
+}
+
+.aviso-dados p {
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* =========================
+   ESPÉCIES
+========================= */
+
+.especies-page {
+    width: min(800px, 90%);
+    padding: 30px 0 125px;
+}
+
+.especies-busca {
+    margin: 18px 0 25px;
+}
+
+.campo-busca {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+}
+
+.campo-busca input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: 12px "DM Sans", sans-serif;
+}
+
+.especies-busca .campo-busca {
+    width: 358px;
+}
+
+.especies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.card-especie {
+    overflow: hidden;
+}
+
+.imagem-especie {
+    height: 101px;
+    margin: 16px 16px 0;
+    border-radius: 13px;
+    background: var(--soft);
+    display: grid;
+    place-items: center;
+}
+
+.arvore-icon {
+    font-size: 52px;
+}
+
+.info-especie {
+    padding: 14px 16px;
+}
+
+.info-especie h2 {
+    font-size: 14px;
+    margin: 0 0 3px;
+}
+
+.nome-cientifico {
+    margin: 0 0 10px;
+    color: #68746e;
+    font: italic 11px Georgia, serif;
+}
+
+.tags-especie,
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+}
+
+.tag.green,
+.origem {
+    background: #e9f5dc;
+    color: #2a7044;
+}
+
+.tag.yellow,
+.quantidade {
+    background: var(--yellow);
+    color: #8e6808;
+}
+
+
+/* =========================
+   MAPA
+========================= */
+
+.mapa-page {
+    width: min(990px, 90%);
+    padding: 35px 0 90px;
+}
+
+.mapa-filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.mapa-filtros .campo-busca {
+    flex: 1;
+}
+
+.mapa-filtros select {
+    width: 210px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 0 12px;
+    background: white;
+}
+
+.resultado-mapa {
+    color: var(--text);
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.mapa-container {
+    display: grid;
+    grid-template-columns: 1fr 327px;
+    gap: 22px;
+}
+
+.mapa-campus {
+    min-height: 420px;
+    padding: 26px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    background: var(--soft);
+    border: 1px solid #d0e2ca;
+    border-radius: 18px;
+    box-shadow: 0 12px 25px rgba(23,109,60,.10);
+}
+
+.area {
+    position: relative;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.area-titulo {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    font-size: 9px;
+    color: #52615a;
+}
+
+.area-patio {
+    grid-row: span 2;
+}
+
+.area-apiario {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.arvore {
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 28px 8px 0;
+}
+
+.lista-arvores {
+    height: 420px;
+    padding: 20px 17px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 12px 25px rgba(23,109,60,.10);
+}
+
+.lista-arvores h2 {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.lista-arvores > p {
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+.arvores-lista {
+    max-height: 310px;
+    overflow-y: auto;
+}
+
+.item-arvore {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+.nome-arvore {
+    flex: 1;
+    font-size: 12px;
+}
+
+.id-arvore {
+    color: #78847d;
+    font-size: 10px;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.hero {
+    min-height: 680px;
+    padding: 90px 0 78px;
+    background: linear-gradient(135deg,#1b6136,#176b3c);
+    color: white;
+}
+
+.container {
+    width: min(1090px, 90%);
+    margin: auto;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.18fr .82fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 18px;
+    background: rgba(116,148,103,.45);
+    color: #ffd329;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-copy > p {
+    max-width: 560px;
+    line-height: 1.55;
+    margin: 15px 0 25px;
+}
+
+.hero-actions,
+.stats {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 28px;
+    font-weight: 700;
+}
+
+.btn-white {
+    background: white;
+    color: #214d31;
+}
+
+.stats {
+    margin-top: 35px;
+}
+
+.stat {
+    width: 175px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 14px;
+    background: rgba(255,255,255,.09);
+}
+
+.stat strong {
+    display: block;
+    color: #ffd329;
+    font: 700 30px "Libre Baskerville", serif;
+}
+
+.hero-trees {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.illustration-card {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: rgba(255,255,255,.12);
+}
+
+.tree {
+    width: 110px;
+    height: 110px;
+    position: relative;
+}
+
+.tree i,
+.tree b,
+.tree em {
+    position: absolute;
+    display: block;
+}
+
+.tree i {
+    left: 50px;
+    bottom: 10px;
+    width: 10px;
+    height: 50px;
+    border-radius: 4px;
+    background: #8a5730;
+}
+
+.tree-ipê b {
+    left: 5px;
+    top: 25px;
+    width: 80px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ffd348;
+}
+
+.tree-cajueiro b,
+.tree-manga b {
+    left: 10px;
+    top: 30px;
+    width: 85px;
+    height: 50px;
+    border-radius: 50%;
+    background: #22954e;
+}
+
+.tree-coqueiro i {
+    height: 68px;
+}
+
+.how-section {
+    padding: 30px 0;
+}
+
+.feature-grid,
+.species-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+.feature-card,
+.species-card {
+    padding: 22px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+}
+
+.species-art {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    background: var(--soft);
+    border-radius: 12px;
+}
+
+.species-content {
+    padding-top: 14px;
+}
+
+.species-content h3 {
+    font-size: 15px;
+}
+
+.scientific {
+    color: #68746e;
+    font: italic 12px Georgia,serif;
+}
+
+.species-section {
+    padding: 50px 0 70px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #eff8e7;
+    border-top: 1px solid var(--line);
+    padding: 25px 0;
+}
+
+.footer-container {
+    width: min(1090px, 90%);
+    margin: auto;
+}
+
+.footer-info h3 {
+    margin: 0 0 5px;
+    font: 14px "Libre Baskerville", serif;
+}
+
+.footer-info p,
+.footer-right p {
+    margin: 0;
+    color: #65736c;
+    font-size: 11px;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+    .hero-grid,
+    .mapa-container {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid,
+    .species-grid,
+    .especies-grid,
+    .curiosidades-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        height: auto;
+    }
+
+    .nav-inner {
+        padding: 10px 0;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .feature-grid,
+    .species-grid,
+    .especies-grid,
+    .curiosidades-grid,
+    .sobre-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-filtros {
+        flex-direction: column;
+    }
+
+    .mapa-filtros select,
+    .especies-busca .campo-busca {
+        width: 100%;
+        height: 38px;
+    }
+
+    .mapa-campus {
+        grid-template-columns: 1fr 1fr;
+    }
+}

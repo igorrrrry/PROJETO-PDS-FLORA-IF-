@@ -560,3 +560,899 @@ h2 {
         text-align: left;
     }
 }
+
+
+
+.curiosidades-page {
+    width: min(890px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 38px 0 205px;
+}
+
+.curiosidades-header {
+    margin-bottom: 25px;
+}
+
+.curiosidades-header h1 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin: 0 0 8px;
+    color: #12351f;
+}
+
+.curiosidades-header p {
+    max-width: 530px;
+    margin: 0;
+    color: #63706a;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* GRID */
+
+.curiosidades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+
+/* CARD */
+
+.curiosidade-card {
+    background: #ffffff;
+    border: 1px solid #d6e3d9;
+    border-radius: 16px;
+    padding: 20px 20px;
+    min-height: 143px;
+
+    box-shadow: 0 12px 22px rgba(23, 109, 60, 0.10);
+}
+
+.curiosidade-card p {
+    margin: 12px 0 0;
+    color: #59655f;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* TAG AMARELA */
+
+.curiosidade-tag {
+    display: inline-block;
+    background: #fff3c9;
+    color: #8b6508;
+    border-radius: 12px;
+    padding: 4px 10px;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+
+
+.sobre-page {
+    width: min(740px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 30px 0 137px;
+}
+
+
+/* CABEÇALHO */
+
+.sobre-header {
+    margin-bottom: 25px;
+}
+
+.sobre-header h1 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin: 0 0 17px;
+    color: #12351f;
+}
+
+.sobre-header p {
+    margin: 0 0 13px;
+    color: #59655f;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* GRID DOS CARDS */
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+
+/* CARD */
+
+.sobre-card {
+    background: #ffffff;
+    border: 1px solid #d6e3d9;
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 122px;
+
+    box-shadow: 0 12px 22px rgba(23, 109, 60, 0.10);
+}
+
+.sobre-card h2 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+    color: #12351f;
+}
+
+.sobre-card p {
+    margin: 0;
+    color: #59655f;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.aviso-dados {
+    margin-top: 26px;
+
+    background: #fff8d9;
+    border: 1px solid #e5b927;
+    border-radius: 17px;
+
+    padding: 20px;
+}
+
+.aviso-dados h2 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+    color: #12351f;
+}
+
+.aviso-dados p {
+    margin: 0;
+    color: #59655f;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+
+@media (max-width: 900px) {
+
+    .curiosidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sobre-page {
+        width: min(740px, calc(100% - 40px));
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .curiosidades-page,
+    .sobre-page {
+        width: min(100% - 28px, 740px);
+        padding-top: 30px;
+        padding-bottom: 80px;
+    }
+
+    .curiosidades-grid,
+    .sobre-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .curiosidades-header h1,
+    .sobre-header h1 {
+        font-size: 25px;
+    }
+}
+
+/* =========================================
+   PÁGINA DE ESPÉCIES
+========================================= */
+
+.especies-page {
+    width: min(800px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 30px 0 125px;
+}
+
+
+/* CABEÇALHO */
+
+.especies-header {
+    margin-bottom: 18px;
+}
+
+.especies-header h1 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin: 0 0 7px;
+    color: #12351f;
+}
+
+.especies-header p {
+    max-width: 600px;
+    margin: 0;
+    color: #63706a;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* BUSCA */
+
+.especies-busca {
+    margin-bottom: 25px;
+}
+
+.especies-busca .campo-busca {
+    width: 358px;
+}
+
+
+/* CAMPO DE BUSCA */
+
+.campo-busca {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    background: #ffffff;
+    border: 1px solid #d5e1d8;
+    border-radius: 20px;
+
+    padding: 0 12px;
+}
+
+.campo-busca span {
+    color: #60746a;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.campo-busca input {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+
+    color: #33453b;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 12px;
+}
+
+.campo-busca input::placeholder {
+    color: #91a098;
+}
+
+
+/* GRID */
+
+.especies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+
+/* CARD */
+
+.card-especie {
+    background: #ffffff;
+    border: 1px solid #d5e2d8;
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 12px 24px rgba(23, 109, 60, 0.10);
+}
+
+
+/* ÁREA DA IMAGEM */
+
+.imagem-especie {
+    height: 101px;
+    margin: 16px 16px 0;
+
+    border-radius: 13px;
+    background: #e8f5db;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arvore-icon {
+    font-size: 55px;
+    line-height: 1;
+}
+
+
+/* INFORMAÇÕES */
+
+.info-especie {
+    padding: 14px 16px 15px;
+}
+
+.info-especie h2 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 15px;
+    line-height: 1.3;
+
+    margin: 0 0 2px;
+    color: #111f16;
+}
+
+.nome-cientifico {
+    margin: 0 0 10px;
+
+    color: #68746e;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 11px;
+}
+
+
+/* TAGS */
+
+.tags-especie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tags-especie .tag {
+    padding: 4px 8px;
+    border-radius: 12px;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.tags-especie .origem {
+    background: #e9f5dc;
+    color: #2a7044;
+}
+
+.tags-especie .quantidade {
+    background: #fff2c7;
+    color: #8e6808;
+}
+
+
+/* =========================================
+   PÁGINA DO MAPA
+========================================= */
+
+.mapa-page {
+    width: min(990px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 35px 0 91px;
+}
+
+
+/* CABEÇALHO */
+
+.mapa-header {
+    margin-bottom: 20px;
+}
+
+.mapa-header h1 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 29px;
+    line-height: 1.2;
+
+    margin: 0 0 7px;
+    color: #12351f;
+}
+
+.mapa-header p {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: #63706a;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* FILTROS */
+
+.mapa-filtros {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 10px;
+}
+
+.mapa-filtros .campo-busca {
+    flex: 1;
+}
+
+.mapa-filtros select {
+    width: 210px;
+    height: 43px;
+
+    padding: 0 13px;
+
+    background: #ffffff;
+    border: 1px solid #d5e1d8;
+    border-radius: 20px;
+
+    color: #44534b;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 12px;
+
+    outline: none;
+}
+
+
+/* RESULTADO */
+
+.resultado-mapa {
+    margin: 0 0 16px;
+
+    color: #596760;
+    font-size: 12px;
+}
+
+
+/* CONTAINER PRINCIPAL */
+
+.mapa-container {
+    display: grid;
+    grid-template-columns: 1fr 327px;
+    gap: 22px;
+    align-items: start;
+}
+
+
+/* =========================================
+   MAPA
+========================================= */
+
+.mapa-campus {
+    position: relative;
+
+    height: 421px;
+
+    padding: 27px;
+
+    background: #e5f4d9;
+    border: 1px solid #d0e2ca;
+    border-radius: 18px;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 1.1fr 1.2fr .7fr;
+    grid-template-rows: 80px 80px 91px 92px;
+
+    gap: 10px;
+
+    box-shadow: 0 14px 30px rgba(23, 109, 60, 0.12);
+}
+
+
+/* ÁREAS */
+
+.area {
+    position: relative;
+
+    background: #ffffff;
+    border: 1px solid #d5e0d6;
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+/* NOME DA ÁREA */
+
+.area-titulo {
+    position: absolute;
+
+    left: 8px;
+    top: 7px;
+
+    color: #52615a;
+    font-size: 9px;
+    line-height: 1;
+
+    z-index: 5;
+}
+
+
+/* POSIÇÕES DO MAPA */
+
+.area-passarela {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.area-patio {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.area-bloco {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.area-refeitorio {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.area-lado-passarela {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.area-laboratorios {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.area-biblioteca {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.area-anexo-dentro {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.area-quadra {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.area-apiario {
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
+}
+
+.area-anexo-fora {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.area-viveiro {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+
+/* ÁRVORES DO MAPA */
+
+.arvore {
+    position: absolute;
+
+    border: 0;
+    background: transparent;
+
+    padding: 0;
+
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: transform .2s ease;
+}
+
+.arvore:hover {
+    transform: scale(1.18);
+}
+
+
+/* POSIÇÕES INDIVIDUAIS */
+
+.area-passarela .arvore:nth-of-type(1) {
+    left: 20px;
+    bottom: 17px;
+}
+
+.area-passarela .arvore:nth-of-type(2) {
+    left: 58px;
+    bottom: 12px;
+}
+
+.area-passarela .arvore:nth-of-type(3) {
+    right: 18px;
+    bottom: 10px;
+}
+
+.area-patio .arvore:nth-of-type(1) {
+    left: 27px;
+    bottom: 19px;
+}
+
+.area-patio .arvore:nth-of-type(2) {
+    right: 20px;
+    bottom: 8px;
+}
+
+.area-patio .arvore:nth-of-type(3) {
+    left: 20px;
+    bottom: 20px;
+}
+
+.area-bloco .arvore {
+    left: 42px;
+    bottom: 18px;
+}
+
+.area-refeitorio .arvore {
+    left: 25px;
+    bottom: 15px;
+}
+
+.area-lado-passarela .arvore:nth-of-type(1) {
+    left: 23px;
+    bottom: 14px;
+}
+
+.area-lado-passarela .arvore:nth-of-type(2) {
+    right: 25px;
+    bottom: 14px;
+}
+
+.area-laboratorios .arvore {
+    left: 50px;
+    bottom: 15px;
+}
+
+.area-biblioteca .arvore {
+    left: 25px;
+    bottom: 13px;
+}
+
+.area-anexo-dentro .arvore {
+    left: 47px;
+    bottom: 20px;
+}
+
+.area-quadra .arvore:nth-of-type(1) {
+    left: 25px;
+    bottom: 17px;
+}
+
+.area-quadra .arvore:nth-of-type(2) {
+    right: 25px;
+    bottom: 13px;
+}
+
+.area-apiario .arvore:nth-of-type(1) {
+    left: 60px;
+    bottom: 90px;
+}
+
+.area-apiario .arvore:nth-of-type(2) {
+    left: 150px;
+    bottom: 57px;
+}
+
+.area-apiario .arvore:nth-of-type(3) {
+    right: 25px;
+    bottom: 15px;
+}
+
+.area-anexo-fora .arvore:nth-of-type(1) {
+    left: 30px;
+    bottom: 15px;
+}
+
+.area-anexo-fora .arvore:nth-of-type(2) {
+    right: 23px;
+    bottom: 13px;
+}
+
+.area-viveiro .arvore:nth-of-type(1) {
+    left: 25px;
+    bottom: 16px;
+}
+
+.area-viveiro .arvore:nth-of-type(2) {
+    right: 25px;
+    bottom: 14px;
+}
+
+
+/* =========================================
+   LISTA DE ÁRVORES
+========================================= */
+
+.lista-arvores {
+    height: 421px;
+
+    background: #ffffff;
+
+    border: 1px solid #d5e2d8;
+    border-radius: 18px;
+
+    padding: 20px 17px;
+
+    box-shadow: 0 14px 30px rgba(23, 109, 60, 0.10);
+
+    overflow: hidden;
+}
+
+.lista-arvores h2 {
+    font-family: "Libre Baskerville", Georgia, serif;
+
+    font-size: 16px;
+    line-height: 1.3;
+
+    margin: 0 0 8px;
+
+    color: #12351f;
+}
+
+.lista-arvores > p {
+    margin: 0 0 15px;
+
+    color: #63706a;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* LISTA */
+
+.arvores-lista {
+    height: 315px;
+
+    overflow-y: auto;
+    padding-right: 3px;
+}
+
+.arvores-lista::-webkit-scrollbar {
+    width: 7px;
+}
+
+.arvores-lista::-webkit-scrollbar-track {
+    background: #f2f5f2;
+    border-radius: 10px;
+}
+
+.arvores-lista::-webkit-scrollbar-thumb {
+    background: #9ca69f;
+    border-radius: 10px;
+}
+
+
+/* ITEM */
+
+.item-arvore {
+    width: 100%;
+
+    min-height: 41px;
+
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+
+    align-items: center;
+    gap: 5px;
+
+    border: 0;
+    background: transparent;
+
+    padding: 5px 0;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.item-arvore:hover {
+    background: #f3f8f2;
+    border-radius: 8px;
+}
+
+.icone-arvore {
+    font-size: 19px;
+    text-align: center;
+}
+
+.nome-arvore {
+    color: #1c3024;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.id-arvore {
+    color: #78847d;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   RESPONSIVO — ESPÉCIES
+========================================= */
+
+@media (max-width: 900px) {
+
+    .especies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mapa-container {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-arvores {
+        height: 350px;
+    }
+
+    .arvores-lista {
+        height: 260px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVO — MAPA
+========================================= */
+
+@media (max-width: 700px) {
+
+    .especies-page,
+    .mapa-page {
+        width: min(100% - 28px, 990px);
+    }
+
+    .especies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .especies-busca .campo-busca {
+        width: 100%;
+    }
+
+    .mapa-filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mapa-filtros .campo-busca,
+    .mapa-filtros select {
+        width: 100%;
+    }
+
+    .mapa-campus {
+        height: auto;
+        min-height: 600px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .area {
+        min-height: 90px;
+    }
+}
