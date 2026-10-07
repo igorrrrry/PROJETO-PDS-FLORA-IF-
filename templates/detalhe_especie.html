@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ especie.nome }} | Flora do IFRN
+{% endblock %}
+
+
+{% block content %}
+
+<main class="detalhe-page">
+
+    <!-- VOLTAR -->
+
+    <a
+        href="{% url 'especies' %}"
+        class="voltar-especies"
+    >
+        ← Voltar para espécies
+    </a>
+
+
+    <!-- CABEÇALHO -->
+
+    <section class="detalhe-hero">
+
+        <div class="detalhe-foto">
+
+            {% if especie.foto %}
+
+                <img
+                    src="{{ especie.foto.url }}"
+                    alt="{{ especie.nome }}"
+                >
+
+            {% else %}
+
+                <span class="detalhe-emoji">
+                    🌳
+                </span>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="detalhe-info">
+
+            <span class="detalhe-tag">
+                ESPÉCIE
+            </span>
+
+            <h1>
+                {{ especie.nome }}
+            </h1>
+
+            <p class="detalhe-cientifico">
+                {{ especie.nome_cientifico }}
+            </p>
+
+            <p class="detalhe-descricao">
+                {{ especie.descricao }}
+            </p>
+
+
+            <div class="detalhe-dados">
+
+                <div>
+                    <strong>Origem</strong>
+                    <span>{{ especie.origem }}</span>
+                </div>
+
+                <div>
+                    <strong>Exemplares</strong>
+                    <span>{{ especie.quantidade }}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMAÇÕES -->
+
+    <section class="informacoes-especie">
+
+        <div class="info-box">
+
+            <h2>Curiosidades</h2>
+
+            <p>
+                {{ especie.curiosidades }}
+            </p>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <h2>Importância e utilidades</h2>
+
+            <p>
+                {{ especie.utilidades }}
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOTOS DOS ALUNOS -->
+
+    <section class="fotos-alunos">
+
+        <div class="secao-titulo">
+
+            <div>
+
+                <h2>
+                    Fotos dos alunos
+                </h2>
+
+                <p>
+                    Compartilhe uma fotografia desta espécie
+                    encontrada no campus.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- GALERIA -->
+
+        <div class="galeria-alunos">
+
+            {% for foto in fotos %}
+
+            <article class="foto-aluno">
+
+                <img
+                    src="{{ foto.foto.url }}"
+                    alt="Foto de {{ especie.nome }}"
+                >
+
+                {% if foto.nome_aluno %}
+
+                <div class="foto-legenda">
+
+                    <strong>
+                        {{ foto.nome_aluno }}
+                    </strong>
+
+                    {% if foto.descricao %}
+                    <p>
+                        {{ foto.descricao }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+                {% endif %}
+
+            </article>
+
+            {% empty %}
+
+            <div class="galeria-vazia">
+
+                <span>📷</span>
+
+                <p>
+                    Ainda não há fotos de alunos.
+                </p>
+
+                <small>
+                    Seja o primeiro a compartilhar!
+                </small>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <div class="enviar-foto">
+
+            <h2>
+                Adicionar uma foto
+            </h2>
+
+            <p>
+                Você encontrou esta espécie no campus?
+                Compartilhe sua foto.
+            </p>
+
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                {% csrf_token %}
+
+
+                <div class="campo-form">
+
+                    <label for="nome_aluno">
+                        Seu nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome_aluno"
+                        name="nome_aluno"
+                        placeholder="Digite seu nome"
+                    >
+
+                </div>
+
+
+                <div class="campo-form">
+
+                    <label for="descricao">
+                        Descrição da foto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="descricao"
+                        name="descricao"
+                        placeholder="Ex.: Foto tirada próximo à biblioteca"
+                    >
+
+                </div>
+
+
+                <div class="campo-form">
+
+                    <label for="foto">
+                        Fotografia
+                    </label>
+
+                    <input
+                        type="file"
+                        id="foto"
+                        name="foto"
+                        accept="image/*"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-enviar-foto"
+                >
+                    📷 Enviar foto
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% include 'fragments/footer.html' %}
+
+{% endblock %}
