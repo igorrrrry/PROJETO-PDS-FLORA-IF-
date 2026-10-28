@@ -61,9 +61,7 @@ def detalhe_especie(request, slug):
             slug=especie.slug
         )
 
-    fotos = especie.fotos_alunos.all().order_by(
-        '-data_envio'
-    )
+    fotos = especie.fotos_alunos.filter(aprovada=True).order_by('-data_envio')
 
     return render(
         request,
