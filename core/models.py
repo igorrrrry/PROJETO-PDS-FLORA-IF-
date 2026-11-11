@@ -32,26 +32,15 @@ class FotoAluno(models.Model):
     especie = models.ForeignKey(
         Especie,
         on_delete=models.CASCADE,
-        related_name='fotos_alunos'
-    )
+        related_name='fotos_alunos')
 
-    foto = models.ImageField(
-        upload_to='fotos_alunos/'
-    )
+    foto = models.ImageField(upload_to='fotos_alunos/')
 
-    nome_aluno = models.CharField(
-        max_length=100,
-        blank=True
-    )
+    nome_aluno = models.CharField(max_length=100,blank=True)
 
-    descricao = models.CharField(
-        max_length=200,
-        blank=True
-    )
+    descricao = models.CharField(max_length=200,blank=True)
 
-    data_envio = models.DateTimeField(
-        auto_now_add=True
-    )
+    data_envio = models.DateTimeField(auto_now_add=True)
 
     aprovada = models.BooleanField(default=False)
 
