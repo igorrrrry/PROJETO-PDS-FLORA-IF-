@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin | Flora do IFRN{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Painel Administrativo</h2>
+
+    <p>Bem-vindo ao painel de administração do Flora do IFRN!</p>
+
+    <div class="row g-3">
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>🌱 Plantas</h5>
+                <p>Gerenciar plantas cadastradas.</p>
+                <a href="#" class="btn btn-success">Gerenciar</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>👤 Usuários</h5>
+                <p>Visualizar e gerenciar usuários.</p>
+                <a href="#" class="btn btn-success">Gerenciar</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>📋 Cadastros</h5>
+                <p>Visualizar os cadastros do sistema.</p>
+                <a href="#" class="btn btn-success">Visualizar</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

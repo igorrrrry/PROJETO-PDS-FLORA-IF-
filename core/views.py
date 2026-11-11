@@ -45,3 +45,6 @@ def detalhe_especie(request, slug):
 
     return render(request,'core/detalhe_especie.html',{'especie': especie,'fotos': fotos}
 )
+
+def admin(request):
+    return render(request, "core/admin.html")
