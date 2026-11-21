@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+
+{% block title %}Gerenciamento | Flora do IFRN{% endblock %}
+
+{% block content %}
+
+<main class="adm-page">
+
+    <section class="adm-header">
+        <div>
+            <span class="adm-eyebrow">ÁREA ADMINISTRATIVA</span>
+            <h1>Painel de gerenciamento</h1>
+            <p>Gerencie as informações e o conteúdo do Flora do IFRN.</p>
+        </div>
+    </section>
+
+    <!-- ESTATÍSTICAS -->
+    <section class="adm-stats">
+
+        <article class="adm-stat">
+            <div class="adm-stat-icon">🌱</div>
+            <div>
+                <strong>{{ total_especies }}</strong>
+                <span>Espécies cadastradas</span>
+            </div>
+        </article>
+
+        <article class="adm-stat">
+            <div class="adm-stat-icon">📷</div>
+            <div>
+                <strong>{{ total_fotos }}</strong>
+                <span>Fotos enviadas</span>
+            </div>
+        </article>
+
+        <article class="adm-stat">
+            <div class="adm-stat-icon">🕒</div>
+            <div>
+                <strong>{{ fotos_pendentes }}</strong>
+                <span>Fotos pendentes</span>
+            </div>
+        </article>
+
+    </section>
+
+    <!-- GERENCIAMENTO -->
+    <section class="adm-section">
+
+        <div class="adm-section-title">
+            <div>
+                <h2>Gerenciamento do site</h2>
+                <p>Escolha o conteúdo que deseja administrar.</p>
+            </div>
+        </div>
+
+        <div class="adm-options">
+
+            <a href="{% url 'listar_especies' %}" class="adm-option">
+                <div class="adm-option-icon">🌳</div>
+                <h3>Espécies</h3>
+                <p>Cadastre, edite e remova espécies do catálogo.</p>
+                <span>Gerenciar espécies →</span>
+            </a>
+
+            <a href="{% url 'cadastrar_especie' %}" class="adm-option">
+                <div class="adm-option-icon">＋</div>
+                <h3>Nova espécie</h3>
+                <p>Adicione uma nova espécie ao catálogo do campus.</p>
+                <span>Cadastrar espécie →</span>
+            </a>
+
+        </div>
+
+    </section>
+
+    <a href="{% url 'home' %}" class="adm-back">
+        ← Voltar para o site
+    </a>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+
+{% extends "base.html" %}
+
+{% block title %}Espécies | Gerenciamento{% endblock %}
+
+{% block content %}
+
+<main class="adm-page">
+
+    <section class="adm-header adm-header-list">
+
+        <div>
+            <span class="adm-eyebrow">GERENCIAMENTO</span>
+            <h1>Espécies cadastradas</h1>
+            <p>Visualize e gerencie as espécies presentes no catálogo.</p>
+        </div>
+
+        <a href="{% url 'cadastrar_especie' %}" class="adm-btn-primary">
+            + Cadastrar espécie
+        </a>
+
+    </section>
+
+    <!-- MENSAGENS -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="adm-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- LISTAGEM -->
+    <section class="adm-list-section">
+
+        <div class="adm-list-heading">
+            <h2>Catálogo de espécies</h2>
+            <span>{{ especies|length }} registros</span>
+        </div>
+
+        <div class="adm-species-grid">
+
+            {% for especie in especies %}
+
+                <article class="adm-species-card">
+
+                    <div class="adm-species-image">
+
+                        {% if especie.foto %}
+                            <img src="{{ especie.foto.url }}"
+                                 alt="{{ especie.nome }}">
+                        {% else %}
+                            <span>🌳</span>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="adm-species-info">
+
+                        <h3>{{ especie.nome }}</h3>
+
+                        <p class="adm-scientific">
+                            {{ especie.nome_cientifico }}
+                        </p>
+
+                        <div class="adm-species-tags">
+                            <span>{{ especie.origem }}</span>
+                            <span>{{ especie.quantidade }} indivíduos</span>
+                        </div>
+
+                        <div class="adm-card-actions">
+
+                            <a href="{% url 'editar_especie' especie.id %}"
+                               class="adm-btn-edit">
+                                Editar
+                            </a>
+
+                            <a href="{% url 'excluir_especie' especie.id %}"
+                               class="adm-btn-delete">
+                                Excluir
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="adm-empty">
+                    <span>🌱</span>
+                    <h3>Nenhuma espécie cadastrada</h3>
+                    <p>Comece adicionando a primeira espécie ao catálogo.</p>
+
+                    <a href="{% url 'cadastrar_especie' %}"
+                       class="adm-btn-primary">
+                        Cadastrar espécie
+                    </a>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <a href="{% url 'adm' %}" class="adm-back">
+        ← Voltar ao painel
+    </a>
+
+</main>
+
+{% endblock %}

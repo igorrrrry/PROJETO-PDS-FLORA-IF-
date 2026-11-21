@@ -38,201 +38,38 @@
 
     <!-- CARDS DAS ESPÉCIES -->
     <section class="especies-grid">
+{% for especie in especies %}
 
-        <!-- IPÊ-AMARELO -->
-        <article class="card-especie">
+    <a href="{% url 'detalhe_especie' especie.slug %}" class="card-especie">
 
-            <div class="imagem-especie">
-                <a href="{% url 'detalhe_especie' 'ipe-amarelo' %}">
-                    <span class="arvore-icon">🌳</span>
-                </a>
-            </div>
-
-            <div class="info-especie">
-
-                <h2>Ipê-amarelo (fictício)</h2>
-
-                <p class="nome-cientifico">
-                    Handroanthus sp.
-                </p>
-
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Nativa do Brasil
-                    </span>
-
-                    <span class="tag quantidade">
-                        5 exemplar(es)
-                    </span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- CAJUEIRO -->
-        <article class="card-especie">
-
-            <div class="imagem-especie">
-                <a href="{% url 'detalhe_especie' 'cajueiro' %}">
-                    <span class="arvore-icon">🌳</span>
-                </a>
-            </div>
-
-            <div class="info-especie">
-
-                <h2>Cajueiro (fictício)</h2>
-
-                <p class="nome-cientifico">
-                    Anacardium occidentale
-                </p>
-
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Nativa do Nordeste brasileiro
-                    </span>
-
-                    <span class="tag quantidade">
-                        4 exemplar(es)
-                    </span>
-                </div>
-
-            </div>
-
-        </article>
-        
-        
-        <!-- COQUEIRO -->
-        <article class="card-especie">
-            <a href="{% url 'detalhe_especie' 'coqueiro' %}">
-                <div class="imagem-especie">
-                    <span class="arvore-icon">🌴</span>
-                </div>
-            </a>
+        <div class="imagem-especie">
             
+            <img src="{{ especie.foto.url }}" alt="{{ especie.nome }}">
             
+        </div>
+        <div class="info-especie">
 
-            <div class="info-especie">
+            <h2>{{ especie.nome }}</h2>
 
-                <h2>Coqueiro (fictício)</h2>
+            <p class="nome-cientifico">
+                {{ especie.nome_cientifico }}
+            </p>
 
-                <p class="nome-cientifico">
-                    Cocos nucifera
-                </p>
+            <div class="tags-especie">
+                <span class="tag origem">
+                    {{ especie.origem }}
+                </span>
 
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Exótica (Ásia tropical)
-                    </span>
-
-                    <span class="tag quantidade">
-                        3 exemplar(es)
-                    </span>
-                </div>
-
+                <span class="tag quantidade">
+                    {{ especie.quantidade }} exemplar(es)
+                </span>
             </div>
 
-        </article>
+        </div>
 
+</a>
 
-        <!-- JUAZEIRO -->
-        <article class="card-especie">
-
-            <div class="imagem-especie">
-                <a href="{% url 'detalhe_especie' 'jamelao' %}">
-                    <span class="arvore-icon">🌳</span>
-                </a>
-            </div>
-            
-
-            <div class="info-especie">
-
-                <h2>Jamelão (fictício)</h2>
-
-                <p class="nome-cientifico">
-                    Ziziphus joazeiro
-                </p>
-
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Nativa da Caatinga
-                    </span>
-
-                    <span class="tag quantidade">
-                        3 exemplar(es)
-                    </span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- OITICICA -->
-        <article class="card-especie">
-
-            <div class="imagem-especie">
-                <a href="{% url 'detalhe_especie' 'oiticica' %}">
-                    <span class="arvore-icon">🌲</span>
-                </a>
-            </div>
-            
-
-            <div class="info-especie">
-
-                <h2>Oiticica (fictícia)</h2>
-
-                <p class="nome-cientifico">
-                    Licania rigida
-                </p>
-
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Nativa do semiárido
-                    </span>
-
-                    <span class="tag quantidade">
-                        3 exemplar(es)
-                    </span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- HIBISCO -->
-        <article class="card-especie">
-
-            <div class="imagem-especie">
-                <a href="{% url 'detalhe_especie' 'hibisco' %}">
-                    <span class="arvore-icon">🌺</span>
-                </a>
-            </div>
-            
-
-            <div class="info-especie">
-
-                <h2>Hibisco (fictício)</h2>
-
-                <p class="nome-cientifico">
-                    Hibiscus rosa-sinensis
-                </p>
-
-                <div class="tags-especie">
-                    <span class="tag origem">
-                        Exótica (Ásia)
-                    </span>
-
-                    <span class="tag quantidade">
-                        4 exemplar(es)
-                    </span>
-                </div>
-
-            </div>
-
-        </article>
+{% endfor %}
 
     </section>
 
