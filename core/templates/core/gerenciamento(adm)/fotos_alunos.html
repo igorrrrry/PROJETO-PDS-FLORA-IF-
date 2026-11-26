@@ -1,0 +1,138 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Gerenciamento de Fotos dos Alunos</h2>
+
+    <p>
+        Visualize as fotos enviadas pelos alunos e
+        escolha quais serão publicadas no site.
+    </p>
+
+    <!-- Mensagens de feedback -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <hr>
+
+    {% if fotos %}
+
+        <div class="row">
+
+            {% for foto in fotos %}
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="card h-100">
+
+                        {% if foto.foto %}
+                            <img
+                                src="{{ foto.foto.url }}"
+                                class="card-img-top"
+                                alt="Foto enviada pelo aluno"
+                                style="height: 220px; object-fit: cover;"
+                            >
+                        {% endif %}
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                {{ foto.especie.nome }}
+                            </h5>
+
+                            <p>
+                                <strong>Aluno:</strong>
+                                {{ foto.nome_aluno|default:"Não informado" }}
+                            </p>
+
+                            <p>
+                                <strong>Descrição:</strong>
+                                {{ foto.descricao|default:"Sem descrição" }}
+                            </p>
+
+                            <p>
+                                <strong>Data de envio:</strong>
+                                {{ foto.data_envio|date:"d/m/Y H:i" }}
+                            </p>
+
+                            {% if foto.aprovada %}
+                                <span class="badge bg-success">
+                                    Aprovada
+                                </span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">
+                                    Pendente
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="card-footer">
+
+                            {% if not foto.aprovada %}
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'aprovar_foto' foto.id %}"
+                                    class="mb-2"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-success w-100"
+                                    >
+                                        Aprovar foto
+                                    </button>
+                                </form>
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'rejeitar_foto' foto.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger w-100"
+                                        onclick="return confirm('Tem certeza que deseja rejeitar esta foto?')"
+                                    >
+                                        Rejeitar foto
+                                    </button>
+                                </form>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            Nenhuma foto foi enviada pelos alunos ainda.
+        </div>
+
+    {% endif %}
+
+    <a href="{% url 'gerenciar_fotos' %}" class="btn btn-secondary mt-3">
+        Voltar ao painel
+    </a>
+
+</div>
+
+{% endblock %}

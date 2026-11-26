@@ -10,9 +10,7 @@ urlpatterns = [
     path('especie/', views.especie, name='especie'),
     path('sobre/', views.sobre, name='sobre'),
     path('detalhe_especies/<slug:slug>/',views.detalhe_especie,name='detalhe_especie'),
-    path('adm/', views.painel_admin, name='adm'),
-    path('adm/especies/listar',views.listar_especies,name='listar_especies'),
-    path('adm/especies/cadastrar/',views.cadastrar_especie,name='cadastrar_especie'),
-    path('adm/especies/editar/<int:id>/',views.editar_especie,name='editar_especie'),
-    path('adm/especies/excluir/<int:id>/',views.excluir_especie,name='excluir_especie'),
+    path('adm/fotos/',views.gerenciar_fotos,name='gerenciar_fotos'),
+    path('adm/fotos/aprovar/<int:id>/',views.aprovar_foto,name='aprovar_foto'),
+    path('adm/fotos/rejeitar/<int:id>/',views.rejeitar_foto,name='rejeitar_foto'),
 ]
